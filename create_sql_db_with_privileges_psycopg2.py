@@ -138,7 +138,7 @@ conn_params = {
 create_database_with_privileges("otherdb", owner = "cweston1", conn_params=conn_params)
 
 # ==================================================================================
-### VERIFY THAT THAT THE DATABASE WAS CREATED SUCCESSFULLY IN THE POSTGRESQL CLUSTER
+### VERIFY THAT THE DATABASE WAS CREATED SUCCESSFULLY IN THE POSTGRESQL CLUSTER
 # ==================================================================================
 
 ## Update the bashrc with the following:
