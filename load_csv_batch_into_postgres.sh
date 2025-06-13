@@ -13,8 +13,8 @@ for file in *.csv; do
   psql -U "$DB_USER" -d "$DB_NAME" -c "\copy $table_name FROM '$CSV_DIR/$file' DELIMITER ',' CSV HEADER"
 
   if [ $? -eq 0 ]; then
-    echo "✅ Successfully loaded $table_name"
+    echo "Successfully loaded $table_name"
   else
-    echo "❌ Failed to load $table_name"
+    echo "Failed to load $table_name"
   fi
 done
