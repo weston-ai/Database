@@ -1,0 +1,207 @@
+2025-06-27 13:44:03,428 - INFO - These logs are saved in 'py_scripts/database/postgres_sqlalchemy/logs/create_table_from_longitudinal_data.log'
+2025-06-27 13:44:03,428 - INFO - SCRIPT OBJECTIVE: To create a table in 'healthdb' database that has a sample from the longitudinal diabetes dataset.
+2025-06-27 13:44:03,428 - INFO - Loading data from 'datasets/my_custom_datasets/diabetes_60k_pats_20250428.csv
+2025-06-27 13:44:18,530 - INFO - Data loaded successfully: 1427909 rows, 87 columns
+2025-06-27 13:44:18,616 - INFO - Number of unique 'Patient_IDs' per Treatment:
+Treatment
+Drug A                   20000
+Drug A with Exercise     20000
+Placebo with Exercise    20000
+2025-06-27 13:44:18,623 - INFO - Starting stratified sample for 0.2% of observations within each strata group
+2025-06-27 13:44:18,709 - INFO - Successfully completed stratified sampling.
+2025-06-27 13:44:18,792 - INFO - Filtered 286027 rows based on 12000 sampled IDs
+2025-06-27 13:44:18,871 - INFO - Treatment: Drug A | Expected Sampled: 4000 | Actual Sampled: 4000 | Δ: 0
+2025-06-27 13:44:18,872 - INFO - Treatment: Drug A with Exercise | Expected Sampled: 4000 | Actual Sampled: 4000 | Δ: 0
+2025-06-27 13:44:18,872 - INFO - Treatment: Placebo with Exercise | Expected Sampled: 4000 | Actual Sampled: 4000 | Δ: 0
+2025-06-27 13:44:18,892 - INFO - Initiate cleaning of column names
+2025-06-27 13:44:18,893 - INFO - Column names cleaned.
+2025-06-27 13:44:18,893 - INFO - Verifying that column names meet PostgreSQL constraints.
+2025-06-27 13:44:18,893 - INFO - All column names past PostgreSQL constraints.
+2025-06-27 13:44:18,893 - INFO - Verifying that that the cleaned dataframe has the same number of columns as original dataset
+2025-06-27 13:44:18,893 - INFO - Cleaned dataframe has the same number of columns as original dataset. Cleaned: 87. Original: 87. Good!
+2025-06-27 13:44:18,893 - INFO - Cleaned dataframe column names: ['patient_id', 'month', 'hba1c', 'fasting_glucose', 'fasting_insulin', 'homa_ir', 'race', 'sex', 'age_group', 'education', 'income', 'insurance', 'bmi', 'bmi_category', 'treatment', 'dropout_month', 'city', 'city_risk_tier', 'smoked_one_pack_10_years_or_more', 'alcohol_daily', 'hypertension', 'hyperlipidemia', 'hba1c_remission_month', 'glucose_remission_month', 'insulin_remission_month', 'homa_ir_remission_month', 'hba1c_remission_duration', 'glucose_remission_duration', 'insulin_remission_duration', 'homa_ir_remission_duration', 'ins', 'irs1', 'irs2', 'pparg', 'glut4', 'tnf_alpha', 'il6', 'foxo1', 'g6pc', 'pck1', 'ucp2', 'palmitoylcarnitine', 'oleoylcarnitine', 'c3_carnitine', 'c5_carnitine', 'c6_carnitine', 'c8_carnitine', 'adiponectin', 'resistin', 'crp', 'fetuina', 'leptin', 'fndc5', 'complement_c3', 'complement_c4', 'cer_d18_1_16_0', 'cer_d18_1_24_1', 'dag_18_0_18_1', 'palmitic_acid', 'oleic_acid', 'sm_d18_1_16_0', 'lpc_16_0', 'lpc_18_1', 'tg_54_2', 'tg_52_2', 'glucose_metabolite', 'lactate', 'pyruvate', 'alanine', 'leucine', 'isoleucine', 'valine', 'glutamine', 'glutamate', 'citrate', 'succinate', 'malate', 'fumarate', 'alpha_ketoglutarate', 'acetoacetate', 'beta_hydroxybutyrate', 'uric_acid', 'hydroxyisobutyrate', 'phenylalanine', 'tyrosine', 'serine', 'glycine']
+2025-06-27 13:44:18,893 - INFO - Attempting to save cleaned dataframe to CSV file: 'diabetes_12k_pats_20250611.csv'.
+2025-06-27 13:44:34,961 - INFO - Successfully saved dataframe as 'diabetes_12k_pats_20250611.csv' at path 'datasets/my_custom_datasets/diabetes_12k_pats_20250611.csv'.
+2025-06-27 13:44:34,961 - INFO - SQL schema output directory exists or was created.
+2025-06-27 13:44:34,961 - INFO - Attempting to create table name based on extraction from CSV filepath: 'datasets/my_custom_datasets/diabetes_12k_pats_20250611.csv'
+2025-06-27 13:44:34,961 - INFO - Successfully created table name: 'diabetes_12k_pats_20250611'
+2025-06-27 13:44:34,964 - INFO - Inferred SQL data types for 87 columns.
+2025-06-27 13:44:34,964 - INFO - Generated SQL CREATE TABLE statement for: 'diabetes_12k_pats_20250611'
+2025-06-27 13:44:34,965 - INFO - Successfully wrote SQL schema to file: '/home/cweston1/miniconda3/envs/PythonProject/py_scripts/database/sql_schemas/diabetes_schema/diabetes_12k_pats_20250611.sql'
+2025-06-27 13:44:34,965 - INFO - 'PG_HEALTHDB_URL' is a valid SQLAlchemy URL.
+2025-06-27 13:44:34,965 - INFO - Attempting to retrieve 'healthdb' database URL.
+2025-06-27 13:44:34,965 - INFO - Successfully retrieved URL for 'healthdb' database.
+2025-06-27 13:44:34,965 - INFO - Attempting to create engine for 'healthdb' database.
+2025-06-27 13:44:34,967 - INFO - Successfully created engine for 'healthdb' database.
+2025-06-27 13:44:34,967 - INFO - Attempting to load SQL schema for table 'diabetes_12k_pats_20250611'.
+2025-06-27 13:44:34,968 - INFO - Successfully loaded SQL schema for table 'diabetes_12k_pats_20250611'.
+2025-06-27 13:44:34,989 - INFO - Attempting to execute SQL schema diabetes_12k_pats_20250611.sql in the 'healthdb' database.
+2025-06-27 13:44:35,046 - INFO - Successfully executed SQL schema for table 'diabetes_12k_pats_20250611' in 'healthdb' database.
+2025-06-27 13:44:35,897 - INFO - Ensuring that table name is safe (no semicolons, SQL keywords, or special characters).
+2025-06-27 13:44:35,897 - INFO - Table name safe.
+2025-06-27 13:44:56,305 - INFO - Successfully copied small dataframe to table 'diabetes_12k_pats_20250611' in 'healthdb' database using buffer.
+2025-06-27 13:44:56,320 - INFO - Successfully committed transaction.
+2025-06-27 13:44:56,327 - INFO - Inspecting the shape of table 'diabetes_12k_pats_20250611' in 'healthdb' database.
+2025-06-27 13:44:56,381 - INFO - Table shape: 286027 rows x 87 columns
+2025-06-27 13:44:56,381 - INFO - Inspecting the column names and data types in table 'diabetes_12k_pats_20250611' in 'healthdb' database.
+2025-06-27 13:44:56,384 - INFO - Column: patient_id | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: month | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: hba1c | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: fasting_glucose | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: fasting_insulin | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: homa_ir | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: race | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: sex | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: age_group | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: education | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: income | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: insurance | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: bmi | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: bmi_category | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: treatment | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: dropout_month | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: city | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: city_risk_tier | Type: text
+2025-06-27 13:44:56,384 - INFO - Column: smoked_one_pack_10_years_or_more | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: alcohol_daily | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: hypertension | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: hyperlipidemia | Type: integer
+2025-06-27 13:44:56,384 - INFO - Column: hba1c_remission_month | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: glucose_remission_month | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: insulin_remission_month | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: homa_ir_remission_month | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: hba1c_remission_duration | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: glucose_remission_duration | Type: double precision
+2025-06-27 13:44:56,384 - INFO - Column: insulin_remission_duration | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: homa_ir_remission_duration | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: ins | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: irs1 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: irs2 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: pparg | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: glut4 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: tnf_alpha | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: il6 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: foxo1 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: g6pc | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: pck1 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: ucp2 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: palmitoylcarnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: oleoylcarnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: c3_carnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: c5_carnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: c6_carnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: c8_carnitine | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: adiponectin | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: resistin | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: crp | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: fetuina | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: leptin | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: fndc5 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: complement_c3 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: complement_c4 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: cer_d18_1_16_0 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: cer_d18_1_24_1 | Type: double precision
+2025-06-27 13:44:56,385 - INFO - Column: dag_18_0_18_1 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: palmitic_acid | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: oleic_acid | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: sm_d18_1_16_0 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: lpc_16_0 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: lpc_18_1 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: tg_54_2 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: tg_52_2 | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: glucose_metabolite | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: lactate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: pyruvate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: alanine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: leucine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: isoleucine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: valine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: glutamine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: glutamate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: citrate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: succinate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: malate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: fumarate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: alpha_ketoglutarate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: acetoacetate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: beta_hydroxybutyrate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: uric_acid | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: hydroxyisobutyrate | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: phenylalanine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: tyrosine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: serine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Column: glycine | Type: double precision
+2025-06-27 13:44:56,386 - INFO - Inspecting the head of table 'diabetes_12k_pats_20250611' in 'healthdb' database.
+2025-06-27 13:44:56,389 - INFO - Head of the 'diabetes_12k_pats_20250611' table in 'healthdb' database:
+    patient_id  month  hba1c  fasting_glucose  fasting_insulin  homa_ir   race  \
+0           0      0  10.31            194.0             49.5     7.83  White   
+1           0      1   9.65            154.0             37.5     6.29  White   
+
+      sex age_group       education   income insurance        bmi  \
+0  Female     45-64  2-Year College  25K-50K   Private  33.316851   
+1  Female     45-64  2-Year College  25K-50K   Private  33.316851   
+
+  bmi_category              treatment  dropout_month         city  \
+0        Obese  Placebo with Exercise             25  New Orleans   
+1        Obese  Placebo with Exercise             25  New Orleans   
+
+  city_risk_tier  smoked_one_pack_10_years_or_more  alcohol_daily  \
+0           high                                 1            0.0   
+1           high                                 1            0.0   
+
+   hypertension  hyperlipidemia  hba1c_remission_month  \
+0             1               0                    6.0   
+1             1               0                    6.0   
+
+   glucose_remission_month  insulin_remission_month  homa_ir_remission_month  \
+0                      6.0                      5.0                      6.0   
+1                      6.0                      5.0                      6.0   
+
+   hba1c_remission_duration  glucose_remission_duration  \
+0                       6.0                         6.0   
+1                       6.0                         6.0   
+
+   insulin_remission_duration  homa_ir_remission_duration       ins      irs1  \
+0                         5.0                         6.0  5.043201  9.300304   
+1                         5.0                         6.0  2.785886  2.685599   
+
+       irs2      pparg     glut4  tnf_alpha       il6     foxo1      g6pc  \
+0  1.891234  14.589334  3.283440   4.781339  1.036373  5.344282  7.047668   
+1  2.126491   2.520964  5.027067   5.512542  4.281991  3.590984  5.407998   
+
+        pck1      ucp2  palmitoylcarnitine  oleoylcarnitine  c3_carnitine  \
+0   2.847324  1.602988             7.35448         5.033924      6.768109   
+1  15.499102  3.391445            12.06856        -2.698386      7.944358   
+
+   c5_carnitine  c6_carnitine  c8_carnitine  adiponectin  resistin       crp  \
+0      5.606915      4.563313      9.702186     2.618524  5.570195  7.237725   
+1      4.380995      4.032003      8.215217     7.812477  6.121324  6.471363   
+
+     fetuina    leptin     fndc5  complement_c3  complement_c4  \
+0  11.621181  3.943020  7.347349       4.983877       4.588851   
+1   6.502387  5.873668  3.219054       9.213871       8.444406   
+
+   cer_d18_1_16_0  cer_d18_1_24_1  dag_18_0_18_1  palmitic_acid  oleic_acid  \
+0       19.714568       11.519223       9.055017      16.042555    1.536012   
+1       -0.023946        6.352712      -2.266377       5.821557    3.239757   
+
+   sm_d18_1_16_0  lpc_16_0  lpc_18_1    tg_54_2   tg_52_2  glucose_metabolite  \
+0       8.138249  3.440969  3.469384  -5.343157  0.182850           20.642497   
+1      -9.569180  5.900837  3.200671 -10.136400 -6.203496            7.907402   
+
+    lactate  pyruvate    alanine    leucine  isoleucine     valine  glutamine  \
+0  5.156120  3.573174  -2.211383   3.981230    1.393637   1.837505   2.659099   
+1  7.436195  3.517855  10.238330  10.419433    5.259682  11.150148   2.363879   
+
+   glutamate   citrate  succinate    malate   fumarate  alpha_ketoglutarate  \
+0  11.966136  6.897612  -0.025522  8.748414  -0.740566            11.206693   
+1  -3.839776  3.426025   8.468181  8.491245  11.974981             4.062830   
+
+   acetoacetate  beta_hydroxybutyrate  uric_acid  hydroxyisobutyrate  \
+0      6.018504              6.729815   4.832688            0.567752   
+1      3.554769            -21.756389   5.678143           12.080547   
+
+   phenylalanine  tyrosine    serine   glycine  
+0       1.346404  5.218551 -2.792489  3.764419  
+1       1.800888  3.930897  9.417730  4.300251  
+2025-06-27 13:44:56,409 - INFO - Disk usage of table 'diabetes_12k_pats_20250611' in 'healthdb' database: 203 MB
